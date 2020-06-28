@@ -1,0 +1,16 @@
+{
+  "name": "gerenciaracheltex",
+  "version": "1.0.0",
+  "description": "Software de gerencia para empresa Racheltex",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "author": "Guilherme Ferrari",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "sqlite3": "^4.2.0"
+  }
+}
