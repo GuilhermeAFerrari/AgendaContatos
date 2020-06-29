@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const nunjucks = require('nunjucks');
 
 // Configurar pasta publica
 app.use(express.static("public"));
@@ -10,11 +11,21 @@ app.use(express.urlencoded({ extended: true }));
 // Pegar o banco de dados
 const db = require('./database/db.js');
 
+// Utilizando template engine
+nunjucks.configure("src/views", {
+    express: app,
+    noCache: true,
+});
+
 app.get('/list', (req, res) => {
     return res.render('list.html');
 });
 
-app.post('/create-record', (req, res) => {
+app.get('/create-record', (req, res) => {
+    return res.render('create-record.html');
+});
+
+app.post('/save-record', (req, res) => {
 
     const query = `
          INSERT INTO records (
@@ -36,12 +47,24 @@ app.post('/create-record', (req, res) => {
         req.body.state,
      ];
 
-     db.run(query, values);
+     function afterInsertData(err) {
+        if(err){
+            console.log(err);
+            return res.send("Erro no cadastro!");
+        }
+
+        console.log('Cadastrado com sucesso');
+        console.log(this);
+
+        return res.render("list.html", { saved: true });
+    }
+
+     db.run(query, values, afterInsertData);
 
 });
 
 app.delete('/delete-record', (req, res) => {
-    return res.json('rota de inativação OK');
+    return res.json('Rota de inativação OK');
 });
 
 app.listen(3333);

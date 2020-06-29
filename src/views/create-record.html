@@ -7,39 +7,39 @@
         <title>Agenda - Racheltex</title>
     
         <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../../public/css/main.css">
-        <link rel="stylesheet" href="../../public/css/responsive.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/responsive.css">
     </head>
 
     <body>
-
-        <div id="content-panel">
-            <button class="button-panel">Salvar</button>
-            <button class="button-panel-back">Voltar</button>
-        </div>
-        
-        <div id="modal">
-            <div id="content-input">
-                <label for="nome">Nome</label>
-                <input type="text">
-
-                <label for="telefone1">Telefone Principal</label>
-                <input type="text">
-
-                <label for="telefone2">Telefone Secundário</label>
-                <input type="text">
-
-                <label for="email">E-mail</label>
-                <input type="text">
-
-                <label for="cidade">Cidade</label>
-                <input type="text">
-
-                <label for="uf">Estado</label>
-                <input type="text">
+        <form action="/save-record" method="POST">
+            <div id="content-panel">
+                <button type="submit" class="button-panel">Salvar</button>
+                <a class="button-panel-back" href="/list">Voltar</a>
             </div>
-        </div>
-        
+            
+            <div id="modal">
+                <div id="content-input">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="name">
+
+                    <label for="telefone1">Telefone Principal</label>
+                    <input type="text" name="telephone1">
+
+                    <label for="telefone2">Telefone Secundário</label>
+                    <input type="text" name="telephone2">
+
+                    <label for="email">E-mail</label>
+                    <input type="text" name="email">
+
+                    <label for="cidade">Cidade</label>
+                    <input type="text" name="city">
+
+                    <label for="uf">Estado</label>
+                    <input type="text" name="state">
+                </div>
+            </div>
+        </form>    
     </body>
     
 </html>
