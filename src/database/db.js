@@ -11,7 +11,7 @@ db.serialize(() => {
              name TEXT,
              telephone1 TEXT,
              telephone2 TEXT,
-             email TEXT
+             email TEXT,
              city TEXT,
              state TEXT
            );`);

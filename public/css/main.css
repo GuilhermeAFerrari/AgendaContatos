@@ -1,3 +1,7 @@
+* {
+    margin: 12px 12px 12px 12px;
+}
+
 body {
     background-color: rgb(36, 36, 36);
     color: #F5F5F5;
@@ -80,20 +84,20 @@ td, th {
 }
 
 input {
-    font-family: ubuntu;
-    width: 100%;
+    font-family: sans-serif;
+    width: 95%;
     height: 32px;
     background: #424242;
     color: #F5F5F5;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 12px;
     margin-bottom: 18px;
 }
 
 #modal {
     box-sizing: border-box;
-    margin-top: 10px;
-    width: 800px;
-    height: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
     background-color: rgba(54, 54, 54, 0.671);
 }

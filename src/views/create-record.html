@@ -16,15 +16,16 @@
             <div id="content-panel">
                 <button type="submit" class="button-panel">Salvar</button>
                 <a class="button-panel-back" href="/list">Voltar</a>
+                <h5>Campos com * são obrigatórios</h5>
             </div>
             
             <div id="modal">
                 <div id="content-input">
-                    <label for="nome">Nome</label>
-                    <input type="text" name="name">
+                    <label for="nome">* Nome</label>
+                    <input type="text" name="name" required>
 
-                    <label for="telefone1">Telefone Principal</label>
-                    <input type="text" name="telephone1">
+                    <label for="telefone1">* Telefone Principal</label>
+                    <input type="text" name="telephone1" required>
 
                     <label for="telefone2">Telefone Secundário</label>
                     <input type="text" name="telephone2">

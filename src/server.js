@@ -18,7 +18,17 @@ nunjucks.configure("src/views", {
 });
 
 app.get('/list', (req, res) => {
-    return res.render('list.html');
+    // Consulta no banco
+    db.all('SELECT * FROM records', function(err, rows){
+        if(err){
+            return console.log(err);
+        }
+
+        const total = rows.length;
+
+        // Mostrar a página HTML com os dados do banco de dados
+        return res.render('list.html', { records: rows });
+    });
 });
 
 app.get('/create-record', (req, res) => {
@@ -27,15 +37,11 @@ app.get('/create-record', (req, res) => {
 
 app.post('/save-record', (req, res) => {
 
-    const query = `
-         INSERT INTO records (
-             name,
-             telephone1,
-             telephone2,
-             email,
-             city,
-             state,
-         ) VALUES (?,?,?,?,?,?);
+   const query = `
+         INSERT INTO records
+         (name, telephone1, telephone2, email, city, state)
+         VALUES
+         (?,?,?,?,?,?);
      `;
 
      const values = [
@@ -56,15 +62,14 @@ app.post('/save-record', (req, res) => {
         console.log('Cadastrado com sucesso');
         console.log(this);
 
-        return res.render("list.html", { saved: true });
+        return res.render('create-record.html');
     }
 
      db.run(query, values, afterInsertData);
-
 });
 
-app.delete('/delete-record', (req, res) => {
+/*app.delete('/delete-record', (req, res) => {
     return res.json('Rota de inativação OK');
-});
+});*/
 
 app.listen(3333);
